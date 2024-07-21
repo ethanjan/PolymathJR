@@ -1,0 +1,483 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+%\usepackage{mathptmx}
+\usepackage{accents}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{IEEEtrantools}
+ \usepackage{float}
+ \usepackage{mathrsfs}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand*\conj[1]{\bar{#1}}
+\newcommand*\mean[1]{\bar{#1}}
+\newcommand\widebar[1]{\mathop{\overline{#1}}}
+
+
+\newcommand{\cc}{{\mathbb C}}
+\newcommand{\rr}{{\mathbb R}}
+\newcommand{\qq}{{\mathbb Q}}
+\newcommand{\nn}{\mathbb N}
+\newcommand{\zz}{\mathbb Z}
+\newcommand{\aaa}{{\mathcal A}}
+\newcommand{\bbb}{{\mathcal B}}
+\newcommand{\rrr}{{\mathcal R}}
+\newcommand{\fff}{{\mathcal F}}
+\newcommand{\ppp}{{\mathcal P}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\vv}{{\mathbf v}}
+\newcommand{\ww}{{\mathbf w}}
+\newcommand{\xx}{{\mathbf x}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Om}{\Omega}
+\newcommand{\dd}{\mathop{}\,\mathrm{d}}
+\newcommand{\ud}{\, \mathrm{d}}
+\newcommand{\seq}[1]{\left\{#1\right\}_{n=1}^\infty}
+\newcommand{\isp}[1]{\quad\text{#1}\quad}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\cis}{cis}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+
+
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+\title{Research}
+\author{Ethan}
+\date{\today}
+\maketitle
+\hbadness=99999
+\hfuzz=50pt
+\noindent
+During the first week, the mentors introduced the projects to us, and we were asked to rank the projects according to our preferences. I chose the projects regarding asymmetric colorings of graphs, ribbon knots, and Toeplitz operators on Bergman spaces, and I began reading the corresponding materials for each of these projects. I spent the second week reading Axler and Zheng's paper. To discuss their main result, I must first introduce some notation. The Bergman space of the unit disk (which we denote $L_a^2$) is defined to be the set of all analytic functions in $L^2(\mathbb{D},dA)$ (which is the set of all square-integrable functions on the unit disk). It can be shown that $L_a^2$ is a closed subspace of the Hilbert space $L^2(\mathbb{D},dA)$. As such, there exists an orthogonal projection operator $P: L^2(\mathbb{D},dA) \rightarrow L_a^2$. Now, we define the Toeplitz operator $T_\phi: L_a^2 \rightarrow L_a^2$ with symbol $\phi \in L^\infty(\mathbb{D},dA)$ as follows: $T_\phi(f) = P(\phi f)$. Next, we define the Bergman reproducing kernel: for any $z \in \mathbb{D}$, the corresponding Bergman reproducing kernel is the function $K_z \in L_a^2$ such that $f(z) = \langle f, K_z \rangle$ for all $f \in L_a^2$. The normalized Bergman reproducing kernel is the function $k_z := K_z/\Vert K_z \Vert$. Finally, for any bounded operator $S$ on $L_a^2$, we define its Berezin transform $\tilde{S}$ as follows: $\tilde{S}(z) = \langle Sk_z, k_z \rangle$. Now that we have the definitions, we may state the main result of Axler and Zheng's paper: a Toeplitz operator $T_u$ is compact if and only if its Berezin transform vanishes on the boundary of the unit disk. I spent a great deal of time reading this paper and proving all the results to myself, so I will now describe this: First they define the function $\varphi_z: D \rightarrow D$ as follows:
+\[
+\varphi_z(w) = \frac{z-w}{1-\overline{z}w}
+\] Then they claim that $\varphi_z \circ \varphi_z$ is the identity. To show this, we compute
+\[
+\varphi_z(\varphi_z(w)) = \frac{z-\varphi_z(w)}{1-\overline{z}\varphi_z(w)} = \frac{z-\frac{z-w}{1-\overline{z}w}}{1-\overline{z}\frac{z-w}{1-\overline{z}w}} = \frac{z(1-\overline{z}w) - (z-w)}{1-\overline{z}w - \overline{z}(z-w)} = \frac{z - \vert z \vert^2 w - z + w}{1 - \overline{z}w - \vert z \vert^2+ \overline{z}w}
+\]
+\[
+=  \frac{w - \vert z \vert^2 w}{1- \vert z \vert^2} = \frac{w(1- \vert z\vert^2)}{1- \vert z \vert^2} = w
+\]
+Next, they define the operator $U_z: L_a^2 \rightarrow L_a^2$ by $U_z f = (f \circ \varphi_z) \varphi_z^\prime$. They claim that this operator is unitary. We proceed to verify this:
+\[
+\langle U_z f, U_zf \rangle = \int_D U_z f(w) \cdot \overline{U_z f(w)} dA(w) = \int_D f(\varphi_z(w))\varphi_z^\prime(w) \overline{f(\varphi_z(w))\varphi_z^\prime(w)} dA(w)
+\]
+\[
+= \int_D \vert f(\varphi_z(w)) \vert^2 \vert \varphi_z^\prime(w) \vert^2 dA(w)
+\] We make the substitution $\lambda = \varphi_z(w)$. The domain remains the same because $\varphi_z$ is an automorphism of the unit disk. We also have
+\[
+dA(\lambda) = \vert \varphi_z^\prime(w) \vert^2 dA(w)
+\] so that we obtain
+\[
+\int_D \vert f(\varphi_z(w)) \vert^2 \vert \varphi_z^\prime(w) \vert^2 dA(w) = \int_D \vert f(\lambda) \vert^2 dA(\lambda) = \int_D f(\lambda) \cdot \overline{f(\lambda)} dA(\lambda) = \langle f, f \rangle
+\] Thus, we deduce that $U_z$ is a unitary operator (so $U_z^* = U_z^{-1}$). Next, they claim that $U_z^{-1} = U_z$. We have
+\[
+U_z(U_z(f)) = U_z((f\circ \varphi_z)\varphi_z^\prime) = (((f \circ \varphi_z)\varphi_z^\prime)\circ \varphi_z) \varphi_z^\prime
+\] Now, we compute
+\[
+(((f\circ \varphi_z)\varphi_z^\prime) \circ \varphi_z (w)) \varphi_z^\prime(w) = (f(\varphi_z(\varphi_z(w))) \varphi_z^\prime(\varphi_z(w)))(\varphi_z^\prime(w)) = f(w) \cdot \frac{1}{\varphi_z^\prime(w)} \cdot \varphi_z^\prime(w) = f(w)
+\] Thus we deduce that $U_zU_zf = f$ for all $f$ so that $U_z^* = U_z^{-1} = U_z$ and $U_z$ is actually self-adjoint. The authors define the Berezin transform of a symbol $u$ to be the Berezin transform of its Toeplitz operator $T_u$; that is, we have $\tilde{u} = \widetilde{T_u}$. For any orthogonal projection $P$, we have that $P = P^*$. Thus, we deduce that 
+\[
+\tilde{u}(z) = \widetilde{T_u}(z) = \langle T_u k_z, k_z \rangle = \langle P(uk_z), k_z \rangle =\langle uk_z, P^*(k_z) \rangle = \langle uk_z, P(k_z) \rangle = \langle uk_z, k_z \rangle
+\] It can be shown that
+\[
+K_z(\lambda) = \frac{1}{(1 - \overline{z}\lambda)^2}
+\] Furthermore, we note that
+\[
+\Vert K_z \Vert^2 = \langle K_z, K_z \rangle = K_z(z) = \frac{1}{(1-\vert z \vert^2)^2}
+\] so that
+\[
+\Vert K_z \Vert = \frac{1}{1- \vert z \vert^2}
+\] Thus, we have
+\[
+k_z = \frac{K_z}{\Vert K_z \Vert} = (1-\vert z \vert^2)K_z
+\] or
+\[
+k_z(\lambda) = (1- \vert z \vert^2)K_z(\lambda) = \frac{1-\vert z \vert^2}{(1-\overline{z}\lambda)^2}
+\] Next, we claim that
+\[
+\vert \varphi_z^\prime(\lambda) \vert = \vert k_z(\lambda) \vert
+\] To show this, we note that
+\[
+\varphi_z^\prime(\lambda) = \frac{-(1-\overline{z}\lambda) - (z-\lambda)(-\overline{z})}{(1-\overline{z}\lambda)^2} = \frac{\vert z \vert^2 - 1}{(1-\overline{z}\lambda)^2}
+\] so that
+\[
+\vert \varphi_z^\prime(\lambda) \vert = \bigg\vert \frac{\vert z \vert^2 - 1}{(1-\overline{z}\lambda)^2} \bigg \vert = \frac{1-\vert z \vert^2}{\vert 1 - \overline{z}\lambda \vert^2} = \vert k_z(\lambda) \vert  
+\] Now we note that
+\[
+\tilde{u}(z) = \langle uk_z, k_z \rangle = \int_D u(w) \vert k_z(w) \vert^2 dA(w)
+\] In the paper, they make the change of variables $\lambda = \varphi_z(w)$. Taking derivatives yields $dA(\lambda) = \vert \varphi_z^\prime(w) \vert^2 dA(w) = \vert k_z(w) \vert^2 dA(w)$ so that
+\[
+dA(w) = \frac{dA(\lambda)}{\vert k_z(w) \vert^2}
+\] Since $\varphi_z \circ \varphi_z$ is the identity, we have $w = \varphi_z(\lambda)$. Thus we find that
+\[
+\tilde{u}(z) = \int_D u(w) \vert k_z(w) \vert^2 dA(w) = \int_D u(\varphi_z(\lambda)) dA(\lambda)
+\] The paper then discusses how the theorem can be used to prove several previously known results. First, we define Hankel operators. The Hankel operator $H_u$ is defined as follows: 
+\[
+H_u f = (I - P)(uf)
+\] The authors state that the main result of the paper can be used to show that $H_u$ is compact iff $\Vert H_u k_z \Vert_2 \rightarrow 0$ as $z \rightarrow \partial{D}$ iff $\Vert u \circ \varphi_z - P(u \circ \varphi_z) \Vert_2 \rightarrow 0$ as $z \rightarrow \partial{D}$. Before proving this, we show that
+\[
+H_{\overline{f}}^* H_g = T_{fg} - T_f T_g
+\] First, we compute what $H_{\overline{f}}^*$ is. Let $a \in (L_a^2)^\perp$ and $b \in L_a^2$. Then, we have
+\[
+\langle H_{\overline{f}}^*a, b \rangle = \langle a, H_{\overline{f}} b \rangle = \langle a, (I-P)(\overline{f}b) \rangle = \langle a, \overline{f}b - P(\overline{f}b) \rangle = \langle a, \overline{f}b \rangle - \langle a,  P(\overline{f}b)\rangle 
+\]
+\[
+= \langle fa, b \rangle - \langle Pa, \overline{f}b \rangle = \langle fa, b \rangle
+\] Thus we deduce that $H_{\overline{f}}^*a = fa$. Now, we let $b \in L_a^2$. We obtain
+\[
+H_{\overline{f}}^* H_g(b) = P(H_{\overline{f}}^* H_g(b)) = P(H_{\overline{f}}^*(gb - P(gb))) = P(fgb - fP(gb)) = P(fgb) - P(fP(gb)) 
+\]
+\[
+= T_{fg}(b) - T_f \circ T_g(b)
+\] thus proving that 
+\[
+H_{\overline{f}}^* H_g = T_{fg} - T_f T_g
+\] so that we obtain
+\[
+H_u^* H_u = H_{\overline{\overline{u}}}^* H_u = T_{\overline{u}u} - T_{\overline{u}} T_u = T_{\vert u \vert^2} - T_{\overline{u}}T_u
+\] Then, the authors state that $H_u$ being compact is equivalent to $H_u^* H_u$ being compact and that this occurs if and only if 
+\[
+\widetilde{H_u^* H_u}(z) \rightarrow 0 
+\] as $z \rightarrow \partial{D}$ (by the theorem they will prove). Notice that
+\[
+\widetilde{H_u^* H_u}(z) = \langle H_u^* H_u k_z, k_z \rangle = \langle H_u k_z, H_u k_z \rangle = \Vert H_u k_z \Vert^2
+\] so $H_u$ is compact if and only if $\Vert H_u k_z \Vert \rightarrow 0$ as $z \rightarrow \partial{D}$. Next, we note that
+\[
+S_z = U_z S U_z = U_z(H_u^* H_u)U_z = U_z(T_{\vert u \vert^2} - T_{\overline{u}}T_u)U_z = U_z T_{\vert u \vert^2} U_z - U_z T_{\overline{u}}U_z U_zT_u U_z
+\]
+\[
+= T_{\vert u \vert^2 \circ \varphi_z} - T_{\overline{u}\circ \varphi_z} T_{u \circ \varphi_z} = T_{\vert u \circ \varphi_z \vert^2} - T_{\overline{u \circ \varphi_z}} T_{u \circ \varphi_z} = H_{u \circ \varphi_z}^* H_{u \circ \varphi_z}
+\] Thus we find that $H_u$ is compact iff $\Vert H_{u \circ \varphi_z}^* H_{u \circ \varphi_z} 1 \Vert \rightarrow 0$ as $z \rightarrow \partial{D}$. Now, we should note that
+\[
+\Vert H_{u \circ \varphi_z} 1 \Vert^2 = \langle H_{u \circ \varphi_z} 1, H_{u \circ \varphi_z} 1 \rangle = \langle H_{u \circ \varphi_z}^* H_{u \circ \varphi_z}  1, 1 \rangle \leq \Vert H_{u \circ \varphi_z}^* H_{u \circ \varphi_z} 1 \Vert \Vert 1 \Vert = \Vert H_{u \circ \varphi_z}^* H_{u \circ \varphi_z} 1 \Vert \leq
+\]
+\[
+\Vert H_{u \circ \varphi_z}^* \Vert \Vert H_{u \circ \varphi_z} 1 \Vert 
+\] This inequality shows that if 
+\[
+\Vert H_{u \circ \varphi_z}^* H_{u \circ \varphi_z} 1 \Vert 
+\] goes to $0$, then
+\[
+\Vert H_{u \circ \varphi_z} 1 \Vert
+\] also goes to $0$. It also shows that if 
+\[
+\Vert H_{u \circ \varphi_z} 1 \Vert 
+\] goes to $0$, then
+\[
+\Vert H_{u \circ \varphi_z}^* H_{u \circ \varphi_z} 1 \Vert
+\] goes to $0$. However, we note that 
+\[
+H_{u \circ \varphi_z} 1 = (I-P)(u\circ \varphi_z 1) = u \circ \varphi_z - P(u \circ \varphi_z)
+\] Thus we find that $H_u$ is compact if and only if $\Vert u \circ \varphi_z - P(u \circ \varphi_z) \Vert \rightarrow 0$ as $z\rightarrow \partial{D}$. Now we compute a power series for the normalized Bergman reproducing kernel $k_z$. Note that
+\[
+k_z(w) = \frac{1- \vert z \vert^2}{(1 - \overline{z}w)^2}
+\] Since
+\[
+\frac{1}{1 - \overline{z}w} = 1 + \overline{z}w + (\overline{z}w)^2 + (\overline{z}w)^3 + \cdots
+\] we have
+\[
+\frac{1}{(1 - \overline{z}w)^2} = \frac{1}{1-\overline{z}w}\cdot \frac{1}{1-\overline{z}w} = (1 + \overline{z}w + (\overline{z}w)^2 + (\overline{z}w)^3 + \cdots)(1 + \overline{z}w + (\overline{z}w)^2 + (\overline{z}w)^3 + \cdots)
+\]
+\[
+= 1 + 2 \overline{z}w + 3(\overline{z}w)^2 + 4(\overline{z}w)^3 + \cdots
+\] so that
+\[
+k_z(w) = (1- \vert z \vert^2) \sum_{m=0}^\infty (m+1)\overline{z}^m w^m
+\] Applying $S$ to both sides of this equation yields
+\[
+Sk_z(w) = (1- \vert z \vert^2) \sum_{m = 0}^\infty (m+1)\overline{z}^m Sw^m
+\] Taking the inner product of $Sk_z$ and $k_z$ yields
+\[
+\langle Sk_z, k_z \rangle  = (1-\vert z \vert^2)^2 \sum_{m=0}^\infty \sum_{n=0}^\infty (m+1)(n+1) \langle Sw^m, w^n \rangle \overline{z}^m z^n
+\] We will use this formula later. Next, we note a lemma that they state in the paper, which essentially says that
+\[
+\tilde{S} \circ \varphi_z = \widetilde{S_z}
+\]
+First, I note that 
+\[
+\tilde{S} \circ \varphi_z (w) = \tilde{S}(\varphi_z(w)) = \langle Sk_{\varphi_z(w)}, k_{\varphi_z(w)} \rangle
+\] and that 
+\[
+\widetilde{S_z}(w) = \langle S_z k_w, k_w \rangle = \langle U_z S U_z k_w, k_w \rangle = \langle S U_z k_w,  U_z k_w \rangle
+\] We note that
+\[
+U_z k_w = (k_w \circ \varphi_z) \varphi_z^\prime
+\]
+To show this, I appeal to the formula from office hours: 
+\[
+K_U(z, \overline{\zeta}) = \det Df(z) \overline{\det Df(\zeta)}  K_V(f(z), \overline{f(\zeta)})
+\]
+ Here I take $U = V = \mathbb{D}$, $f = \varphi_z$, $z = w$ and $\zeta = \varphi_z(v)$. Thus the above formula becomes 
+ \[
+ K_\mathbb{D}(w,\overline{\varphi_z(v)}) = \det D \varphi_z(w) \overline{\det D \varphi_z(\varphi_z(v))} K_\mathbb{D}(\varphi_z(w), \overline{v})
+ \] Then, I compute 
+ \[
+ K_\mathbb{D}(w,\overline{\varphi_z(v)}) = \overline{K_w(\varphi_z(v))} = \overline{\frac{k_w(\varphi_z(v))}{1 - \vert w \vert^2}}
+ \] 
+ \[
+ K_\mathbb{D}(\varphi_z(w), \overline{v}) = \overline{K_{\varphi_z(w)}(v)} = \overline{\frac{k_{\varphi_z(w)}(v)}{1- \vert \varphi_z(w) \vert^2}}
+ \] 
+ \[
+ \det D \varphi_z(w) = \varphi_z^\prime(w) = \frac{\vert z \vert^2 - 1}{(1-\overline{z}w)^2}
+ \] and finally 
+ \[
+ \overline{\det D \varphi_z(\varphi_z(v))} = \overline{\varphi_z^\prime(\varphi_z(v))} = \overline{\frac{1}{\varphi_z^\prime(v)}}
+ \] Putting it all together, I obtain 
+ \[\overline{\frac{k_w(\varphi_z(v))}{1 - \vert w \vert^2}} =  \frac{\vert z \vert^2 - 1}{(1-\overline{z}w)^2} \cdot  \overline{\frac{1}{\varphi_z^\prime(v)}} \cdot  \overline{\frac{k_{\varphi_z(w)}(v)}{1- \vert \varphi_z(w) \vert^2}}
+ \] I take the complex conjugate to obtain 
+ \[
+ \frac{k_w(\varphi_z(v))}{1 - \vert w \vert^2} =  \frac{\vert z \vert^2 - 1}{(1-z\overline{w})^2} \cdot  \frac{1}{\varphi_z^\prime(v)} \cdot  \frac{k_{\varphi_z(w)}(v)}{1- \vert \varphi_z(w) \vert^2}
+\] Using the fact that 
+\[
+1 - \vert \varphi_z(w)\vert^2 = \frac{(1-\vert z \vert^2)(1- \vert w \vert^2)}{\vert 1 - z \overline{w} \vert^2}
+\] the above equation becomes 
+\[
+\frac{k_w(\varphi_z(v))}{1 - \vert w \vert^2} =  \frac{\vert z \vert^2 - 1}{(1-z\overline{w})^2} \cdot  \frac{1}{\varphi_z^\prime(v)} \cdot  \frac{k_{\varphi_z(w)}(v)}{\frac{(1-\vert z \vert^2)(1- \vert w \vert^2)}{\vert 1 - z \overline{w} \vert^2}}
+\] Simplification yields 
+\[
+k_w(\varphi_z(v)) \varphi_z^\prime(v) = k_{\varphi_z(w)}(v) \cdot -\frac{\vert 1- z \overline{w} \vert^2}{(1 - z \overline{w})^2}
+\] Now, we note that
+\[
+\langle SU_z k_w,  U_z k_w\rangle = \int_\mathbb{D} S(U_z k_w(v)) \overline{U_z k_w(v)} dA(v) = \int_\mathbb{D} S(k_w(\varphi_z(v)) \varphi_z^\prime(v)) \cdot \overline{k_w(\varphi_z(v)) \varphi_z^\prime(v)} dA(v)
+\]
+\[
+=  \int_\mathbb{D} Sk_{\varphi_z(w)}(v) \cdot -\frac{\vert 1- z \overline{w} \vert^2}{(1 - z \overline{w})^2} \cdot \overline{k_{\varphi_z(w)}(v)} \cdot  \overline{-\frac{\vert 1- z \overline{w} \vert^2}{(1 - z \overline{w})^2}} dA(v) = \int_\mathbb{D} Sk_{\varphi_z(w)}(v) \overline{k_{\varphi_z(w)}(v)} dA(v)  
+\]
+\[
+= \langle Sk_{\varphi_z(w)}, k_{\varphi_z(w)} \rangle
+\]
+
+
+
+
+
+Let the symbol $\phi$ be defined by $\phi(z) = z^a \overline{z}^b$, and let the function $f$ be defined by $f(z) = z^n \overline{z}^m$. We compute
+\[
+T_\phi(f) = P(\phi f) = \int_\mathbb{D} B_\lambda(z,w) f(w) \phi(w) \lambda(w) dA(w)
+\] where
+\[
+\lambda(w) = \exp\bigg(-\frac{1}{1-\vert w \vert^2}\bigg)
+\] We write
+\[
+B_\lambda(z,w) = \sum_{j=0}^\infty \frac{z^j \overline{w}^j}{\Vert z^j \Vert^2}
+\] so that we obtain
+\[
+\int_\mathbb{D} B_\lambda(z,w) f(w) \phi(w) \lambda(w) dA(w) = \sum_{j=0}^\infty \frac{z^j}{\Vert z^j \Vert ^2} \int_\mathbb{D} w^{j+a+n} \overline{w}^{b+m} \lambda(w) dA(w)
+\] Because the weight $\lambda$ is radial, we note that the integral is only nonzero when $j+a+n = b + m$, or when $j = b + m - (a+n)$. In order for this to occur, we note that $b+m - (a+n)$ must be nonnegative. So we have
+\[
+\frac{z^{b+m-a-n}}{\Vert z^{b+m-a-n} \Vert^2} \int_\mathbb{D}  w^{b+m} \overline{w}^{b+m} \lambda(w) dA(w) = z^{b+m-a-n} \frac{\Vert z^{b+m} \Vert^2}{\Vert z^{b+m-a-n} \Vert^2}
+\] where the norm is taken in the weighted Bergman space. I first assume that $\phi \equiv 1$ on $\mathbb{D}$. Then we have
+\[
+T_\phi = T_1 = P
+\] Thus we are asking whether or not $P$ is compact. An operator $S$ is compact if and only if $S$ takes bounded sequences to sequences with converging subsequences. Let us consider some bounded sequences. First, we have $\{z^n\}_{n \in \mathbb{N}}$. We verify that it is bounded. Note that
+\[
+\Vert z^n \Vert^2  = \int_{\mathbb{D}} \vert z \vert^{2n} d\lambda(z) = \int_{\mathbb{D}} \vert z \vert^{2n} \exp\bigg(-\frac{1}{1-\vert z \vert^2}\bigg) dA(z) = 2 \int_0^1 r^{2n+1} \exp\bigg(-\frac{1}{1-r^2}\bigg) dr
+\] Let us compute this integral for some specific values of $n$. We have
+\[
+\int_0^1 r \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.0742
+\]
+\[
+\int_0^1 r^3 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.0194
+\]
+\[
+\int_0^1 r^5 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.0075
+\]
+\[
+\int_0^1 r^7 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.0035
+\]
+\[
+\int_0^1 r^9 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.0018
+\] From this, it is clear that the sequence $\{z^n\}_{n\in \mathbb{N}}$ is bounded and even converges. Now, we compute $P(f_m)$ as follows:
+\[
+P(z^m) = \int_\mathbb{D} \sum_{n = 0}^\infty \frac{z^n \overline{w}^n}{\vert z^n \vert^2} w^m \lambda(w) dA(w) = \frac{z^m}{\Vert z^m \Vert^2} \int_\mathbb{D} \vert w \vert^{2m} \lambda(w) dA(w) = \frac{z^m}{\Vert z^m \Vert^2}\cdot \Vert z^m \Vert^2 = z^m
+\] This is because $z^m$ is analytic. Thus $\{P(z^n)\}_{n \in \N}$ is convergent. Next I try $\phi(z) = 1 - \vert z \vert^2$. I first consider the sequence $\{z^n\}_{n \in \N}$. I note that
+\[
+T_\phi(z^m) =  P(\phi z^m) = \int_D \sum_{n=0}^\infty \frac{z^n \overline{w}^n}{\Vert z^n \Vert^2} w^m (1 - \vert w \vert^2) \lambda(w) dA(w) = \frac{z^m}{\Vert z^m \Vert^2} \int_D (\vert w \vert^{2m} - \vert w \vert^{2m+2}) \lambda(w) dA(w)
+\] Now we compute
+\[
+\int_D (\vert w \vert^{2m} - \vert w \vert^{2m+2}) \lambda(w) dA(w) = 2 \int_0^1 (r^{2m+1} -  r^{2m+3}) \exp\bigg(-\frac{1}{1-r^2}\bigg) dr
+\] Let us compute this integral for several values of $m$.
+\[
+2 \int_0^1 (r^{1} -  r^{3}) \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.109
+\]
+\[
+2 \int_0^1 (r^{3} -  r^{5}) \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.0236
+\]
+\[
+2 \int_0^1 (r^{5} -  r^{7}) \exp\bigg(-\frac{1}{1-r^2}\bigg) dr \approx 0.008
+\] In any event, it is clear that these values are less than the corresponding norms of $z^m$. Thus, we find that $\Vert T_\phi(z^m) \Vert \leq \Vert z^m \Vert$ for all $m \in \N$; that is the sequence $\{T_\phi(z^n)\}_{n \in \N}$ converges to the function $0$.
+\\ \\
+Next I consider the sequence $\{f_n\}$ where
+\[
+f_n(w) = \frac{1}{1- \vert w \vert^n}
+\] We note that
+\[
+\Vert f_n \Vert^2 = 2 \int_0^1 \frac{r}{(1-r^n)^2} \exp\bigg(\frac{-1}{1-r^2}\bigg) dr
+\] Computing several values of $n$, we do see that this sequence is bounded. Next we compute
+\[
+T_\phi(f_n) = P(\phi f_n) = \int_D B_\lambda(z,w) f_n(w) \phi(w) dA(w)
+\] Notice that
+\[
+f_n(w) = \frac{1}{1- \vert w \vert ^n} = 1 + \vert w \vert^n + \vert w \vert^{2n} + \cdots
+\]
+\[
+\phi(w) = (1-\vert w \vert^2)
+\] 
+\[
+B_\lambda(z,w)  = \sum_{j=0}^\infty \frac{z^j \overline{w}^j}{\Vert z^j \Vert ^2}
+\] Thus we find that
+\[
+T_\phi(f_n) = 1
+\] for all $n$ so that the sequence $\{T_\phi(f_n)\}$ is convergent.
+\\ \\
+Now we consider the sequence $f_m(z) = \overline{z}^m z^{a}$. Here we have
+\[
+T_\phi(z^m) = P(\phi z^m) = \int_\mathbb{D} \sum_{j=0}^\infty \frac{z^j \overline{w}^j}{\Vert z^j \Vert^2} \overline{w}^m w^a (1-w\overline{w}) \lambda(w) dA(w)
+\] Notice that this is nonzero only when $j+m = a$. That is, it is nonzero when $j = a - m$. In order for this to be true, we must have $m \leq a$. Thus it is nonzero for only finitely many $m$, so it too converges
+\\ \\
+Next I try the sequence $\{z^n\overline{z}^a\}$. We compute 
+\[
+T_\phi(f_n)(z) = P(\phi f_n)(z) = \int_D \sum_{j=0}^\infty \frac{z^j \overline{w}^j}{\Vert z^j \Vert^2} w^n \overline{w}^a (1-w \overline{w}) \lambda(w) dA(w)
+\] We note that the integral is nonzero only when $n =  a + j$. That is, we have $j = n - a \geq 0$. So we obtain
+\[
+\frac{z^{n-a}}{\Vert z^{n-a}\Vert^2} (\Vert z^n \Vert^2 - \Vert z^{n+1} \Vert^2)
+\]
+First I consider the sequence $f_n(z) = \sin(nz)$. Notice that
+\[
+\int_D \sin(nz) dA(z) = \frac{1}{\pi} \int_0^{2\pi} \int_0^1 \sin(nre^{i\theta}) dr d\theta = 0
+\] where the equality comes from Wolfram Alpha. If we want to determine if it is bounded, we must consider the integral
+\[
+\Vert \sin(nz) \Vert^2 = \int_D \vert \sin(nz) \vert^2 \exp\bigg(-\frac{1}{1-\vert z \vert^2}\bigg) dA(z)
+\] For each $n$, it can be seen that the integral converges. However, we don't know if the sequence is bounded. First, let us consider the sequence without the exponential weight.
+\[
+\Vert \sin(nz) \Vert^2 = \int_D \vert \sin(nz) \vert^2 dA(z) = \frac{1}{\pi} \int_0^{2\pi} \int_0^1 \vert \sin(nre^{i\theta})\vert^2 dr d\theta
+\] We compute this for several values of $n$.
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(re^{i\theta})\vert^2 dr d\theta \approx  2.119
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(2re^{i\theta})\vert^2 dr d\theta \approx  10.0142
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(3re^{i\theta})\vert^2 dr d\theta \approx  39.448
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(4re^{i\theta})\vert^2 dr d\theta \approx  181.833
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(5re^{i\theta})\vert^2 dr d\theta \approx  939.957
+\] Now we consider the sequence with the weight:
+\[
+\int_D \vert \sin(nz) \vert^2 \lambda(z) dA(z) = \frac{1}{\pi} \int_0^{2\pi} \int_0^1 \vert \sin(nre^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta
+\] Let us compute this integral for several values of $n$:
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.221
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(2re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.94
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(3re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 2.673
+\] 
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(4re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 7.868
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(5re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 26.293
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(6re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 97.7814
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(7re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 393.24
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(8re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 1677.21
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(9re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 7488.43
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(10re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 34685.8
+\] As we can see, the norm clearly diverges as $n$ approaches $\infty$. Thus, this sequence is not unbounded, so we shouldn't bother to check whether the sequence of images contains a convergent subsequence. Now I consider functions with a singularity at the point $z = 1$. First, we may try $f(z) = \frac{1}{1-z}$. We compute the unweighted integral:
+\[
+\int_D \frac{1}{1-z} dA(z) = \int_0^1 \int_0^{2\pi} \frac{r}{1-re^{i\theta}} d\theta dr = \int_0^{2\pi} \int_0^1 \frac{r}{1-re^{i\theta}} dr d\theta = \pi
+\] Let us compare the different ways of evaluating this integral. First, we can try integrating with respect to $\theta$ so that we obtain
+\[
+\int_0^{2\pi} \frac{r}{1-re^{i\theta}} d\theta
+\] but it seems extremely difficult to find a closed form expression for the result of this integral. Next, we can try integrating with respect to $r$ so that we obtain
+\[
+\int_0^1 \frac{r}{1-re^{i\theta}} dr = -e^{-2i \theta}(e^{i\theta} + \log(1 - e^{i\theta}))
+\] Then, we can integrate the result with respect to $\theta$ to obtain
+\[
+\int_0^{2\pi} -e^{-2i \theta}(e^{i\theta} + \log(1 - e^{i\theta}) d \theta = \pi
+\] Now, let us compute the unweighted norm of $f$. We have
+\[
+\Vert f \Vert^2 = \int_D \frac{1}{\vert 1- z \vert^2} dA(z) = \int_0^{2\pi} \int_0^1 \frac{r}{\vert 1 - re^{i\theta} \vert^2} dr d \theta 
+\] We note that
+\[
+1 - re^{i\theta} = 1 - r(\cos \theta + i \sin \theta) = (1-r \cos \theta) + i(r \sin \theta)
+\] so that
+\[
+\vert 1 - re^{i\theta} \vert^2 = (1-r\cos \theta)^2 + (r\sin \theta)^2 = 1 - 2r \cos \theta + r^2 \cos^2 \theta + r^2 \sin^2 \theta = 1 - 2r\cos \theta + r^2(\sin^2 \theta + \cos^2 \theta)
+\] which equals
+\[
+r^2 + 1 - 2r \cos \theta
+\] Thus we deduce that
+\[
+\int_0^{2\pi} \int_0^1 \frac{r}{\vert 1 - re^{i\theta} \vert^2} dr d \theta = \int_0^{2\pi} \int_0^1 \frac{r}{r^2 +1 - 2r \cos \theta} dr d \theta  
+\] This integral appears to be extremely difficult to compute, so we may set $r = 1$. In this case, we obtain
+\[
+\int_0^{2\pi} \frac{1}{1^2 +1 - 2 \cdot 1 \cdot \cos \theta} d \theta = \frac{1}{2} \int_0^{2\pi} \frac{1}{1 - \cos \theta} d\theta
+\] which is infinite. Thus, we may deduce that
+\[
+\Vert f \Vert^2 = +\infty
+\]
+The function $f$ is integrable, but its norm is infinite in the unweighted case. Next, let us try with the weight $\lambda$.
+\[
+\int_D \frac{1}{1-z} \lambda(z) dA(z) = \int_0^{2\pi} \int_0^1 \frac{r}{1-re^{i\theta}}\cdot \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.4665
+\] Now, we may try to compute the weighted norm of $f$. We obtain
+\[
+\Vert f \Vert ^2 = \int_D \frac{1}{\vert 1-z \vert^2} \lambda(z) dA(z) = \int_0^{2\pi} \int_0^1 \frac{r}{\vert 1 - re^{i\theta} \vert^2} \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.6892
+\] Thus, we notice significant differences between the weighted and unweighted cases.
+\end{document} 

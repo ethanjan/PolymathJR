@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+%\usepackage{mathptmx}
+\usepackage{accents}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{IEEEtrantools}
+ \usepackage{float}
+ \usepackage{mathrsfs}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand*\conj[1]{\bar{#1}}
+\newcommand*\mean[1]{\bar{#1}}
+\newcommand\widebar[1]{\mathop{\overline{#1}}}
+
+
+\newcommand{\cc}{{\mathbb C}}
+\newcommand{\rr}{{\mathbb R}}
+\newcommand{\qq}{{\mathbb Q}}
+\newcommand{\nn}{\mathbb N}
+\newcommand{\zz}{\mathbb Z}
+\newcommand{\aaa}{{\mathcal A}}
+\newcommand{\bbb}{{\mathcal B}}
+\newcommand{\rrr}{{\mathcal R}}
+\newcommand{\fff}{{\mathcal F}}
+\newcommand{\ppp}{{\mathcal P}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\vv}{{\mathbf v}}
+\newcommand{\ww}{{\mathbf w}}
+\newcommand{\xx}{{\mathbf x}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Om}{\Omega}
+\newcommand{\dd}{\mathop{}\,\mathrm{d}}
+\newcommand{\ud}{\, \mathrm{d}}
+\newcommand{\seq}[1]{\left\{#1\right\}_{n=1}^\infty}
+\newcommand{\isp}[1]{\quad\text{#1}\quad}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\cis}{cis}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+
+
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+\title{Jul23}
+\author{Ethan Martirosyan}
+\date{\today}
+\maketitle
+\hbadness=99999
+\hfuzz=50pt
+\section*{More sequences}
+First I consider the sequence $f_n(z) = \sin(nz)$. Notice that
+\[
+\int_D \sin(nz) dA(z) = \frac{1}{\pi} \int_0^{2\pi} \int_0^1 \sin(nre^{i\theta}) dr d\theta = 0
+\] where the equality comes from Wolfram Alpha. If we want to determine if it is bounded, we must consider the integral
+\[
+\Vert \sin(nz) \Vert^2 = \int_D \vert \sin(nz) \vert^2 \exp\bigg(-\frac{1}{1-\vert z \vert^2}\bigg) dA(z)
+\] For each $n$, it can be seen that the integral converges. However, we don't know if the sequence is bounded. First, let us consider the sequence without the exponential weight.
+\[
+\Vert \sin(nz) \Vert^2 = \int_D \vert \sin(nz) \vert^2 dA(z) = \frac{1}{\pi} \int_0^{2\pi} \int_0^1 \vert \sin(nre^{i\theta})\vert^2 dr d\theta
+\] We compute this for several values of $n$.
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(re^{i\theta})\vert^2 dr d\theta \approx  2.119
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(2re^{i\theta})\vert^2 dr d\theta \approx  10.0142
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(3re^{i\theta})\vert^2 dr d\theta \approx  39.448
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(4re^{i\theta})\vert^2 dr d\theta \approx  181.833
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(5re^{i\theta})\vert^2 dr d\theta \approx  939.957
+\] Now we consider the sequence with the weight:
+\[
+\int_D \vert \sin(nz) \vert^2 \lambda(z) dA(z) = \frac{1}{\pi} \int_0^{2\pi} \int_0^1 \vert \sin(nre^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta
+\] Let us compute this integral for several values of $n$:
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.221
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(2re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.94
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(3re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 2.673
+\] 
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(4re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 7.868
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(5re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 26.293
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(6re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 97.7814
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(7re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 393.24
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(8re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 1677.21
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(9re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 7488.43
+\]
+\[
+\int_0^{2\pi} \int_0^1 \vert \sin(10re^{i\theta}) \vert^2 \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 34685.8
+\] As we can see, the norm clearly diverges as $n$ approaches $\infty$. Thus, this sequence is not unbounded, so we shouldn't bother to check whether the sequence of images contains a convergent subsequence. Now I consider functions with a singularity at the point $z = 1$. First, we may try $f(z) = \frac{1}{1-z}$. We compute the unweighted integral:
+\[
+\int_D \frac{1}{1-z} dA(z) = \int_0^1 \int_0^{2\pi} \frac{r}{1-re^{i\theta}} d\theta dr = \int_0^{2\pi} \int_0^1 \frac{r}{1-re^{i\theta}} dr d\theta = \pi
+\] Let us compare the different ways of evaluating this integral. First, we can try integrating with respect to $\theta$ so that we obtain
+\[
+\int_0^{2\pi} \frac{r}{1-re^{i\theta}} d\theta
+\] but it seems extremely difficult to find a closed form expression for the result of this integral. Next, we can try integrating with respect to $r$ so that we obtain
+\[
+\int_0^1 \frac{r}{1-re^{i\theta}} dr = -e^{-2i \theta}(e^{i\theta} + \log(1 - e^{i\theta}))
+\] Then, we can integrate the result with respect to $\theta$ to obtain
+\[
+\int_0^{2\pi} -e^{-2i \theta}(e^{i\theta} + \log(1 - e^{i\theta}) d \theta = \pi
+\] Now, let us compute the unweighted norm of $f$. We have
+\[
+\int_D \frac{1}{\vert 1- z \vert^2} dA(z) = \int_0^{2\pi} \int_0^1 \frac{r}{\vert 1 - re^{i\theta} \vert^2} dr d \theta \approx 
+\]
+Thus, we find that even without the weight, the function $f$ can still be integrated. Next, let us try it with the weight $\lambda$.
+\[
+\int_D \frac{1}{1-z} \lambda(z) dA(z) = \int_0^{2\pi} \int_0^1 \frac{r}{1-re^{i\theta}}\cdot \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.4665
+\] Now, we may try to compute the weighted norm of $f$. We obtain
+\[
+\Vert f \Vert ^2 = \int_D \frac{1}{\vert 1-z \vert^2} \lambda(z) dA(z) = \int_0^{2\pi} \int_0^1 \frac{r}{\vert 1 - re^{i\theta} \vert^2} \exp\bigg(-\frac{1}{1-r^2}\bigg) dr d\theta \approx 0.6892
+\]
+\end{document} 
